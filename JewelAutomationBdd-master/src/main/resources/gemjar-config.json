@@ -1,0 +1,21 @@
+{
+  "environment": "beta",
+  "projectName": "Jewel-Automation-BDD",
+  "reportName": "GemJar Jewel Report",
+  "gemjarUserName": "maulick.b",
+  "tagName": "",
+  "scenario": "",
+  "gemjarToken": "713f8683-66e6-465d-9f1b-bc071158c5381669698039308",
+  "gemjarSubID": "test_id",
+  "glueCode": "StepDefination",
+  "prod": {
+    "browserName": "Chrome",
+    "launchUrl": "https://jewel.gemecosystem.com/",
+    "browserTimeout": 10
+  },
+  "beta": {
+    "browserName": "chrome",
+    "launchUrl": "https://jewel-beta.gemecosystem.com/",
+    "browserTimeout": 10
+  }
+}
