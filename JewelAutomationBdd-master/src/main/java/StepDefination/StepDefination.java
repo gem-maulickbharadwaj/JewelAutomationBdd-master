@@ -2803,7 +2803,8 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.waitSec(1);
             DriverAction.click(GEMeCO_api);
             DriverAction.waitSec(1);
-            DriverAction.typeText(input_suite_nm, "TESTER_GEMINIISSSS");
+            String s = "TESTER_" + Math.random();
+            DriverAction.typeText(input_suite_nm, s);
             DriverAction.waitSec(1);
             DriverAction.click(create_suite);
 //            String allfi = DriverAction.getElementText(suite_created);
@@ -2814,8 +2815,8 @@ public class StepDefination extends GemEcoUpload {
 //            } else {
 //                GemTestReporter.addTestStep("Suite name is unique Alert validation", "Successful<br>Expected Text: " + allfi + "<br>Actual Text: " + unique, STATUS.FAIL, DriverAction.takeSnapShot());
 //            }
-            String s = DriverAction.getElementText(new_uniq);
-            if (s.equals("TESTER_GEMINIISSSS")) {
+            String s1 = DriverAction.getElementText(new_uniq);
+            if (s1.equals(s)) {
                 GemTestReporter.addTestStep("New Suite name is added or not? validation", "Successful<br>Expected Text: " + s + "<br>Actual Text: " + s, STATUS.PASS, DriverAction.takeSnapShot());
             } else {
                 GemTestReporter.addTestStep("New Suite name is added or not? validation", "Successful<br>Expected Text: " + s + "<br>Actual Text: " + s, STATUS.FAIL, DriverAction.takeSnapShot());
@@ -3054,18 +3055,18 @@ public class StepDefination extends GemEcoUpload {
             } else {
                 GemTestReporter.addTestStep("Create Suite Button", "Create Suite button is present and is displayed", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            DriverAction.click(create_suite_button,"Create Suite Button");
+            DriverAction.click(create_suite_button, "Create Suite Button");
             DriverAction.waitSec(2);
-            DriverAction.click(Locators.globalCross,"Cross icon");
+            DriverAction.click(Locators.globalCross, "Cross icon");
             DriverAction.waitSec(2);
             if (DriverAction.getElement(upload_button).isDisplayed()) {
                 GemTestReporter.addTestStep("Upload Button", "Upload button is present and is displayed", STATUS.PASS, DriverAction.takeSnapShot());
             } else {
                 GemTestReporter.addTestStep("Create Suite Button", "Upload button is present and is displayed", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            DriverAction.click(upload_button,"Upload button");
+            DriverAction.click(upload_button, "Upload button");
             DriverAction.waitSec(2);
-            DriverAction.click(Locators.globalCross,"Cross icon");
+            DriverAction.click(Locators.globalCross, "Cross icon");
             DriverAction.waitSec(2);
         } catch (Exception e) {
             logger.info("Exception occurred", e);
