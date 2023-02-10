@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cb88659c-3249-4ea1-8986-1efcf41781af" name="Changes" comment="commit for jenkins">
+      <change beforePath="$PROJECT_DIR$/Report/09-Feb-2023/11-45-36/SS/SS1675923352309.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/09-Feb-2023/11-45-36/SS/SS1675923353113.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/09-Feb-2023/11-45-36/SS/SS1675923353644.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/09-Feb-2023/11-45-36/SS/SS1675923358042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Objects/Locators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Objects/Locators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/StepDefination/StepDefination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StepDefination/StepDefination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/features/admin.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/features/admin.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/features/autolytics.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/features/autolytics.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/features/homeScreen.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/features/homeScreen.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gemjar-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gemjar-config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Objects/Locators.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/StepDefination/Hook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/StepDefination/StepDefination.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/admin.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/autolytics.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/bridgeToken.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/homeScreen.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/logIn.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/logOut.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/signUp.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/testTool.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/welcomePage.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gemjar-config.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KRqMgXCrU4eTYInofY5gMQU5AT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/GemEcoSystem-JewelAutomation-BDD/JewelAutomationBdd-master&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Cucumber Java.Scenario: Launch login and logout jewel dashboard">
+    <configuration name="Scenario: Launch jewel and check url of jewel and pricing" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/main/resources/features/welcomePage.feature" />
+      <option name="GLUE" value="com.gemini.generic.bdd com.gemini.generic.feature.utils StepDefination" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="JewelAutomationBdd-master" />
+      <option name="NAME_FILTER" value="^Launch jewel and check url of jewel and pricing$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Launch jewel and check url of jewel and pricing$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Launch jewel and check url of jewel and pricing" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Launch login and logout jewel dashboard" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/main/resources/features/logIn.feature" />
+      <option name="GLUE" value="com.gemini.generic.bdd com.gemini.generic.feature.utils StepDefination" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="JewelAutomationBdd-master" />
+      <option name="NAME_FILTER" value="^Launch login and logout jewel dashboard$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Launch login and logout jewel dashboard$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Launch login and logout jewel dashboard" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Validate Delete Option under Action for project" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/main/resources/features/admin.feature" />
+      <option name="GLUE" value="com.gemini.generic.bdd com.gemini.generic.feature.utils StepDefination" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="JewelAutomationBdd-master" />
+      <option name="NAME_FILTER" value="^Validate Delete Option under Action for project$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Validate Delete Option under Action for project$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Validate Delete Option under Action for project" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Validate new filers of suite summary report" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/main/resources/features/autolytics.feature" />
+      <option name="GLUE" value="com.gemini.generic.bdd com.gemini.generic.feature.utils StepDefination" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="JewelAutomationBdd-master" />
+      <option name="NAME_FILTER" value="^Validate new filers of suite summary report$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Validate new filers of suite summary report$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Validate new filers of suite summary report" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JewelUi-Automation-1.0-SNAPSHOT-jar-with-dependencies.jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/JewelUi-Automation-1.0-SNAPSHOT-jar-with-dependencies.jar" />
+      <option name="VM_PARAMETERS" value="-Denvironment=&quot;prod&quot; -DprojectName=JEWEL-UI-JV -DreportName=GemJar -DgemjarUserName=maulick.b -Dfeature=src/main/resources/features/homeScreen.feature -DtagName=@tag7 -Dscenario=&quot;&quot; -DgemjarToken=904ae410-337e-4755-afd0-476925b84e6b1674476364245 -DjewelEntryUrl=https://apis.gemecosystem.com/enter-point -DgemjarSubID=test_id -DglueCode=StepDefination" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <configuration name="C:/Projects/GemEcoSystem-JewelAutomation-BDD/JewelAutomationBdd-master/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="JewelAutomationBdd-master" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cucumber Java.Scenario: Launch login and logout jewel dashboard" />
+        <item itemvalue="Cucumber Java.Scenario: Launch jewel and check url of jewel and pricing" />
+        <item itemvalue="TestNG.C:/Projects/GemEcoSystem-JewelAutomation-BDD/JewelAutomationBdd-master/testng.xml" />
+        <item itemvalue="Cucumber Java.Scenario: Validate new filers of suite summary report" />
+        <item itemvalue="Cucumber Java.Scenario: Validate Delete Option under Action for project" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb88659c-3249-4ea1-8986-1efcf41781af" name="Changes" comment="" />
+      <created>1673947696460</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673947696460</updated>
+    </task>
+    <task id="LOCAL-00001" summary="commit for jenkins">
+      <created>1673948195830</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673948195830</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit for jenkins" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit for jenkins" />
+  </component>
+</project>
