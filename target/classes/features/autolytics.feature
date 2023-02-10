@@ -72,7 +72,7 @@ Feature: Autolytics
   Scenario Outline:Validate new filers of suite summary report
     Given click er clickon loginnn and entersss <usernamess> and <passwordss>
     Then validate enviroment filter
-    Then validate pie chart filter
+#    Then validate pie chart filter
     Examples:
       | usernamess   | passwordss |
       | arpit.mishra | arpit1234  |

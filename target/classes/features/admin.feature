@@ -40,5 +40,15 @@ Feature: Admin Screen
     Given click on admin
     Then validate the project name for admin screen is getting modified
 
+  Scenario: Validate description is being modified
+    Given click on admin
+    Then validate the description is getting modified
+
+  Scenario: Validate Delete Option under Action for project
+    Given click on admin
+    Then validate when user clicks on no
+    Then validate when user clicks on yes
+
+
 
 

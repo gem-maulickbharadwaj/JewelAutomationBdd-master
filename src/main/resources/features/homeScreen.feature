@@ -1,5 +1,6 @@
 Feature: Home Screen
 
+  @tag7
   Scenario: Verify Home screen is appearing or not
     Given You are on the login screen
     Then Enter username as "arpit.mishra"

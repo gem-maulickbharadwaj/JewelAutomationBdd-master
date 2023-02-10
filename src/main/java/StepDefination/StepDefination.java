@@ -1,5 +1,6 @@
 package StepDefination;
 
+import com.gemini.generic.bdd.GemJarCucumberBase;
 import com.gemini.generic.reporting.GemEcoUpload;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
@@ -2318,7 +2319,7 @@ public class StepDefination extends GemEcoUpload {
                 DriverAction.waitSec(1);
                 DriverAction.click(Locators.select_pie, "Select Option(s)");
                 DriverAction.waitSec(1);
-                DriverAction.click(Locators.betaa, "Beta");
+                DriverAction.click(Locators.betaa, "Prod");
                 DriverAction.waitSec(1);
                 String asse = DriverAction.getElementText(Locators.beta_txt);
                 DriverAction.waitSec(1);
@@ -2371,6 +2372,9 @@ public class StepDefination extends GemEcoUpload {
                     GemTestReporter.addTestStep("Suite summary report Filter Environment Validation", "Text we got: " + list.get(0), STATUS.FAIL);
                 }
                 DriverAction.click(Locators.select_pie);
+                DriverAction.waitSec(2);
+//                DriverAction.click(Locators.enviromnt_filter_prod, "Filter Environment");
+                DriverAction.click(suite_sum);
                 DriverAction.waitSec(1);
             }
         } catch (Exception e) {
@@ -3436,6 +3440,90 @@ public class StepDefination extends GemEcoUpload {
             } else {
                 GemTestReporter.addTestStep("Modified project name Validation", "Successful<br>Expected Text: " + s + "<br>Actual Text: " + new_project_name, STATUS.FAIL, DriverAction.takeSnapShot());
             }
+        } catch (Exception e) {
+            logger.info("Exception occurred", e);
+            GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
+        }
+    }
+
+    @Then("^validate the description is getting modified$")
+    public void desc_mod_admin() throws Exception {
+        try {
+            DriverAction.doubleClick(Locators.sno, "S No");
+            DriverAction.waitSec(2);
+            String description_nm_bf4 = DriverAction.getElementText(desc_name_admin);
+            GemTestReporter.addTestStep("Description before modification", "Description is: " + description_nm_bf4, STATUS.INFO, DriverAction.takeSnapShot());
+            DriverAction.click(edit_project_details, "Edit Project Details");
+            DriverAction.waitSec(2);
+            DriverAction.click(textArea, "Project Description");
+            DriverAction.waitSec(2);
+            DriverAction.clearText(textArea);
+            DriverAction.waitSec(2);
+            String s = "TESTER_" + Math.random();
+            DriverAction.typeText(textArea, s);
+            DriverAction.waitSec(2);
+            DriverAction.click(save_admin_button, "Save");
+            DriverAction.waitSec(4);
+//            String s3 = DriverAction.getElementText(Alert_admin1);
+//            String project_alert = "Project is updated Successfully !!";
+//            if (s3.equals(project_alert)) {
+//                GemTestReporter.addTestStep("Project is updated Successfully !! Alert Validation", "Successful<br>Expected Text: " + project_alert + "<br>Actual Text: " + s3, STATUS.PASS);
+//            } else {
+//                GemTestReporter.addTestStep("Project is updated Successfully !! Alert Validation", "Unsuccessful<br>Expected Text: " + project_alert + "<br>Actual Text: " + s3, STATUS.FAIL);
+//            }
+            String new_desc_name = DriverAction.getElementText(desc_name_admin);
+            GemTestReporter.addTestStep("Description after modification", "Description is: " + new_desc_name, STATUS.INFO);
+            if (new_desc_name.equals(s)) {
+                GemTestReporter.addTestStep("Modified Description Validation", "Successful<br>Expected Text: " + s + "<br>Actual Text: " + new_desc_name, STATUS.PASS, DriverAction.takeSnapShot());
+            } else {
+                GemTestReporter.addTestStep("Modified Description Validation", "Successful<br>Expected Text: " + s + "<br>Actual Text: " + new_desc_name, STATUS.FAIL, DriverAction.takeSnapShot());
+            }
+        } catch (Exception e) {
+            logger.info("Exception occurred", e);
+            GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
+        }
+    }
+
+    @Then("^validate when user clicks on no$")
+    public void admin_del_no() throws Exception {
+        try {
+            DriverAction.doubleClick(Locators.sno, "S No");
+            DriverAction.waitSec(2);
+            Actions actions = new Actions(DriverManager.getWebDriver());
+            actions.moveToElement(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
+            actions.click(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
+            DriverAction.waitSec(2);
+            GemTestReporter.addTestStep("Click on Delete Project", "Successfully : Clicked on Delete Project", STATUS.PASS, DriverAction.takeSnapShot());
+            DriverAction.click(delete_no_btn, "No");
+            DriverAction.waitSec(2);
+        } catch (Exception e) {
+            logger.info("Exception occurred", e);
+            GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
+        }
+    }
+
+    @Then("^validate when user clicks on yes$")
+    public void admin_del_yes() throws Exception {
+        try {
+            String project_name = DriverAction.getElementText(project_name_Admin);
+            GemTestReporter.addTestStep("Project which is being deleted", "Name is: " + project_name, STATUS.INFO, DriverAction.takeSnapShot());
+            Actions actions = new Actions(DriverManager.getWebDriver());
+            actions.moveToElement(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
+            actions.click(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
+            DriverAction.waitSec(2);
+            GemTestReporter.addTestStep("Click on Delete Project", "Successfully : Clicked on Delete Project", STATUS.PASS, DriverAction.takeSnapShot());
+            DriverAction.click(delete_yes_btn, "Yes");
+            WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
+            wait.until(ExpectedConditions.presenceOfElementLocated(Alert_admin2));
+            String s = DriverAction.getElement(Alert_admin2).getAttribute("innerHTML");
+            String s2 = "Project has been deleted temporarily and moved to Recycle Bin";
+            STATUS status;
+            if (s.equals(s2)) {
+                status = STATUS.PASS;
+            } else {
+                status = STATUS.FAIL;
+            }
+            GemTestReporter.addTestStep("Project has been deleted temporarily and moved to Recycle Bin Alert Validation", "Expected Text: " + s2 + "<br>Actual Text: " + s, status);
         } catch (Exception e) {
             logger.info("Exception occurred", e);
             GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
