@@ -129,3 +129,4 @@ Feature: Autolytics
     Examples:
       | username     | password  |
       | arpit.mishra | arpit1234 |
+

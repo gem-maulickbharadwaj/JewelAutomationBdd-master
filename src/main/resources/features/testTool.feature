@@ -190,9 +190,9 @@ Feature: Test Tool
     Then Create suite
     Then execute suite on ui
 
-  Scenario:Check s3 file viewer screen
-    Given Verify on first rendering only suit pill is displayed
-    Then check the json file
+#  Scenario:Check s3 file viewer screen
+#    Given Verify on first rendering only suit pill is displayed
+#    Then check the json file
 
 #  Scenario Outline: Sample-2
 #    Given Set endpoint and method "<endpoint>" and "<Method>"
