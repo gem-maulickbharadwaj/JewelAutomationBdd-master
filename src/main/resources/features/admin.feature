@@ -49,6 +49,19 @@ Feature: Admin Screen
     Then validate when user clicks on no
     Then validate when user clicks on yes
 
+  Scenario Outline: Validate Add user functionality
+    Given click on admin
+    Then User <username> is added to project
+    Then Validate user <username> is added
+    Examples: |username|
+              |geco-maulik|
+
+  Scenario Outline: Validate delete option in project user access
+    Given click on admin
+    Then Validate delete user <username> function
+    Examples: |username|
+              |geco-maulik|
+
 
 
 
