@@ -8,7 +8,7 @@ public class Locators {
     public static By password = By.xpath("//input[@placeholder='Password']");
     public static By login_button = By.xpath("//button[text()='Login']");
     public static By home_button = By.xpath("//div[text()='Home']");
-    public static By profile = By.xpath(" //div[@class='d-flex']");
+    public static By profile = By.xpath("(//*[local-name()='svg' and @data-icon=\"arrow-right-from-bracket\"]/*[local-name()='path'])");
     public static By log_out = By.xpath("//span[text()='Logout']");
     public static By page_title = By.xpath("//div[text()='Jewel Applications']");
     public static By autolytics = By.xpath("(//div[text()='Autolytics'])[2]");
@@ -26,7 +26,7 @@ public class Locators {
     public static By card_two = By.xpath("(//div[@class='mt-3 cardName'])[2]");
     public static By content_card_two = By.xpath("(//div[@class='mt-1 appCardContent'])[2]");
     public static By login_alert = By.xpath("//div[@role='alert']");
-    public static By three_lines_button = By.xpath("//img[@class='collapseBtn ms-3 mt-3 mb-2']");
+    public static By three_lines_button = By.xpath("(//*[local-name()='svg' and @data-icon=\"circle-chevron-left\"]/*[local-name()='path'])");
     public static By signup_button = By.xpath("//span[text()='Sign up']");
     public static By first_name = By.xpath("//input[@placeholder='Firstname']");
     public static By last_name = By.xpath(" //input[@placeholder='Lastname']");
@@ -122,7 +122,7 @@ public class Locators {
     public static By password1 = By.xpath("//*[@placeholder='Password']");
     public static By confirmpass = By.xpath("//*[@placeholder='Confirm Password']");
     public static By companyname = By.xpath("//*[@placeholder='Company Name']");
-    public static By register = By.xpath("//*[@class='mt-3 btn btn-primary text-center px-5']");
+    public static By register = By.xpath("//button[text()=\"Register\"]");
     public static By span = By.xpath("(//div[@class=\"text-center\"]/span)[1]");
     public static By sno = By.xpath("//*[text()='S No']");
     public static By secondPage = By.xpath("//*[@class='p-button p-component p-paginator-page p-paginator-element p-link p-highlight']");
@@ -138,6 +138,7 @@ public class Locators {
     public static By admin_select = By.xpath("//li[text()=\"Admin\"]");
     public static By Alert_admin1 = By.xpath("(//div[contains(@class,'Toastify__toast-body')]//div)[2]");
     public static By Alert_admin2=By.xpath("//div[contains(@class,'Toastify__toast-container--top-right')]//child::div[contains(@class,'Toastify__toast-body')]/div[2]");
+    public static By email_already_existss=By.xpath("//div[contains(@class,'Toastify__toast-container Toastify__toast-container--top-left')]//child::div[contains(@class,'Toastify__toast-body')]/div[2]");
     public static By project_deleting=By.xpath("//td[@class=\"align-middle\"]/div[@class=\"typewriter\"]");
     public static By create_project=By.xpath("//button[text()=\"Create Project\"]");
     public static By project_name_create_project = By.xpath("//input[@placeholder=\"Project Name\"]");

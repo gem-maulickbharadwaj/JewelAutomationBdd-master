@@ -3,7 +3,7 @@
   "projectName": "JEWEL-UI-JV",
   "reportName": "GemJar Jewel Report",
   "gemjarUserName1": "gem-maulik",
-  "feature": "src/main/resources/features/admin.feature",
+  "feature": "src/main/resources/features",
   "tagName": "",
   "scenario": "",
   "emailReport": "y",
