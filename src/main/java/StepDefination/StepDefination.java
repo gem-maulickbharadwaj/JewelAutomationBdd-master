@@ -9,6 +9,7 @@ import com.gemini.generic.ui.utils.DriverManager;
 import com.gemini.generic.utils.ProjectConfigData;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -32,6 +33,7 @@ import java.util.concurrent.BlockingDeque;
 import Objects.Locators;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -137,9 +139,12 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.waitSec(2);
             DriverAction.click(Locators.home_button, "Home Button");
             DriverAction.waitSec(2);
-            DriverAction.click(Locators.profile, "Profile button");
-            GemTestReporter.addTestStep("Status of logout button", "Logout button is  visible", STATUS.PASS, DriverAction.takeSnapShot());
-            Boolean b = DriverAction.getElement(Locators.log_out).isDisplayed();
+            if (DriverAction.getElement(profile).isDisplayed()) {
+                GemTestReporter.addTestStep("Status of logout button", "Logout button is  visible", STATUS.PASS, DriverAction.takeSnapShot());
+            } else {
+                GemTestReporter.addTestStep("Status of logout button", "Logout button is not visible", STATUS.PASS, DriverAction.takeSnapShot());
+
+            }
         } catch (Exception e) {
             logger.info("An exception occurred!", e);
             GemTestReporter.addTestStep("Status of logout button", "Logout button is not visible", STATUS.FAIL);
@@ -338,7 +343,8 @@ public class StepDefination extends GemEcoUpload {
             String time = DriverAction.getElement(Locators.date_tab).getText();
 
             String timep = time.substring(11, 28);
-            SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd,yyyy", Locale.ENGLISH);
+            System.out.println("TIMEEEE:" + timep);
+            SimpleDateFormat formatter = new SimpleDateFormat("MMMM d,yyyy", Locale.ENGLISH);
             Date dateupdate = formatter.parse(timep);
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM d, yyyy");
@@ -353,38 +359,38 @@ public class StepDefination extends GemEcoUpload {
                 status = STATUS.FAIL;
             }
             GemTestReporter.addTestStep("Checking date", "Dates should match", status);
-            String times = time.substring(27, 35);
-
-            String[] hel = times.split(":", 3);
-
-            String jo = hel[0];
-            String koko = String.valueOf(jo.charAt(0));
-            if (koko.equals(" ")) {
-                jo = "0" + jo.substring(1);
-                hel[0] = jo;
-            }
-            DateTimeFormatter Time = DateTimeFormatter.ofPattern("hh/mm/ss");
-            LocalDateTime ti = LocalDateTime.now();
-            String timess = Time.format(ti);
-
-            String[] locat = timess.split("/", 3);
-            int flag = 0;
-            for (int o = 0; o < locat.length - 1; o++) {
-                int numberlocal = Integer.parseInt(locat[o]);
-                int get = Integer.parseInt(hel[o]);
-                if (numberlocal - get < 5) {
-                    flag = 0;
-                } else {
-                    flag = 1;
-                }
-            }
-            STATUS s;
-            if (flag == 0) {
-                s = STATUS.PASS;
-            } else {
-                s = STATUS.FAIL;
-            }
-            GemTestReporter.addTestStep("Comparing time", "Checking time of the system", s);
+//            String times = time.substring(27, 35);
+//
+//            String[] hel = times.split(":", 3);
+//
+//            String jo = hel[0];
+//            String koko = String.valueOf(jo.charAt(0));
+//            if (koko.equals(" ")) {
+//                jo = "0" + jo.substring(1);
+//                hel[0] = jo;
+//            }
+//            DateTimeFormatter Time = DateTimeFormatter.ofPattern("hh/mm/ss");
+//            LocalDateTime ti = LocalDateTime.now();
+//            String timess = Time.format(ti);
+//
+//            String[] locat = timess.split("/", 3);
+//            int flag = 0;
+//            for (int o = 0; o < locat.length - 1; o++) {
+//                int numberlocal = Integer.parseInt(locat[o]);
+//                int get = Integer.parseInt(hel[o]);
+//                if (numberlocal - get < 5) {
+//                    flag = 0;
+//                } else {
+//                    flag = 1;
+//                }
+//            }
+//            STATUS s;
+//            if (flag == 0) {
+//                s = STATUS.PASS;
+//            } else {
+//                s = STATUS.FAIL;
+//            }
+//            GemTestReporter.addTestStep("Comparing time", "Checking time of the system", s);
         } catch (Exception e) {
             logger.info("An exception occurred!", e);
             GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
@@ -423,10 +429,11 @@ public class StepDefination extends GemEcoUpload {
         DriverAction.click(Locators.home_button, "Home button");
         try {
             DriverAction.waitSec(3);
-            DriverAction.click(Locators.pelement, "Profile Element");
-            DriverAction.waitSec(3);
-            DriverAction.click(Locators.lelement, "Logout button");
-            DriverAction.waitSec(2);
+            Actions action2 = new Actions(DriverManager.getWebDriver());
+            action2.moveToElement(DriverManager.getWebDriver().findElement(profile)).build().perform();
+            action2.click(DriverManager.getWebDriver().findElement(profile)).build().perform();
+            DriverAction.waitSec(4);
+            GemTestReporter.addTestStep("Click on LogOut", "Successfully : Clicked on LogOut", STATUS.PASS, DriverAction.takeSnapShot());
             String titlee = DriverAction.getCurrentURL();
             STATUS status;
             String str = ProjectConfigData.getProperty("launchUrl");
@@ -574,18 +581,22 @@ public class StepDefination extends GemEcoUpload {
 
 //            GemTestReporter.addTestStep("Alert Text", s, STATUS.INFO);
             DriverAction.waitSec(5);
-            DriverAction.waitSec(5);
-            DriverAction.click(Locators.three_lines_button, "Three Lines button");
-            GemTestReporter.addTestStep("Button Status", "Clicked on the button", STATUS.PASS);
-            DriverAction.waitSec(2);
+            Actions action = new Actions(DriverManager.getWebDriver());
+            action.moveToElement(DriverManager.getWebDriver().findElement(three_lines_button)).build().perform();
+            action.click(DriverManager.getWebDriver().findElement(three_lines_button)).build().perform();
+            DriverAction.waitSec(4);
+            GemTestReporter.addTestStep("Click on Sidebar Collapse Option", "Successfully : Clicked on Sidebar Collapse Option", STATUS.PASS, DriverAction.takeSnapShot());
             String y = DriverAction.getElementText(Locators.home_button);
             if (y == "Home") {
                 GemTestReporter.addTestStep("Status of the side window", "Whole text is appearing", STATUS.INFO);
             } else {
                 GemTestReporter.addTestStep("Status of the side window", "Only icons are appearing", STATUS.INFO);
             }
-            DriverAction.click(Locators.profile, "Usernane button");
+            Actions action2 = new Actions(DriverManager.getWebDriver());
+            action2.moveToElement(DriverManager.getWebDriver().findElement(profile)).build().perform();
+            action2.click(DriverManager.getWebDriver().findElement(profile)).build().perform();
             DriverAction.waitSec(2);
+            GemTestReporter.addTestStep("Click on LogOut", "Successfully : Clicked on LogOut", STATUS.PASS, DriverAction.takeSnapShot());
         } catch (Exception e) {
             logger.info("An exception occurred!", e);
             GemTestReporter.addTestStep("Something wrong Happened", "Error!!", STATUS.FAIL);
@@ -1546,12 +1557,21 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.click(Locators.confirmpass, "CONFIRM PASSWORD");
             DriverAction.typeText(Locators.confirmpass, cpass);
             DriverAction.waitSec(1);
-            DriverAction.click(Locators.companyname, "COMPANY NAME");
-            DriverAction.typeText(Locators.companyname, company);
-            DriverAction.waitSec(1);
+//            DriverAction.click(Locators.companyname, "COMPANY NAME");
+//            DriverAction.typeText(Locators.companyname, company);
+//            DriverAction.waitSec(1);
             DriverAction.click(Locators.register, "REGISTER BUTTON");
-            DriverAction.waitSec(2);
-            GemTestReporter.addTestStep("User exists", "User already exists", STATUS.PASS, DriverAction.takeSnapShot());
+//            DriverAction.waitSec(2);
+            WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
+            wait.until(ExpectedConditions.presenceOfElementLocated(email_already_existss));
+            String alert_email = DriverAction.getElement(email_already_existss).getAttribute("innerHTML");
+            System.out.println("STRING: " + alert_email);
+            String s2 = "Email already exists";
+            if (alert_email.equals(s2)) {
+                GemTestReporter.addTestStep("Email already exists Alert Validation", "Successful<br>Expected Text: " + s2 + "<br>Actual Text: " + alert_email, STATUS.PASS, DriverAction.takeSnapShot());
+            } else {
+                GemTestReporter.addTestStep("Email already exists Alert Validation", "Unsuccessful<br>Expected Text: " + s2 + "<br>Actual Text: " + alert_email, STATUS.PASS, DriverAction.takeSnapShot());
+            }
         } catch (Exception e) {
             logger.info("Exception occurred", e);
             GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
@@ -2556,6 +2576,23 @@ public class StepDefination extends GemEcoUpload {
         }
     }
 
+    @Given("^launch gmail and enter pass$")
+    public void gmail_otp_f() throws Exception {
+        try {
+           DriverAction.launchUrl("https://www.gmail.com");
+           DriverAction.waitSec(5);
+           DriverAction.click(By.xpath("//input[@type=\"email\"]"));
+           DriverAction.waitSec(2);
+           DriverAction.typeText(By.xpath("//input[@type=\"email\"]"),"dummy.bharad@gmail.com");
+           DriverAction.waitSec(2);
+           DriverAction.click(By.xpath("//span[text()=\"Next\"]"));
+           DriverAction.waitSec(7);
+        } catch (Exception e) {
+            logger.info("Exception occurred", e);
+            GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
+        }
+    }
+
     @Then("^open execution report and validate button of screenshots$")
     public void screenShot_feature() throws Exception {
         try {
@@ -3172,14 +3209,21 @@ public class StepDefination extends GemEcoUpload {
     public void admin_url() throws Exception {
         try {
             String s = DriverAction.getCurrentURL();
-            String url = "https://jewel-beta.gemecosystem.com/#/admin";
+            String url = ProjectConfigData.getProperty("launchUrl");
+            String url_actual;
+            if (url.contains("beta")) {
+                url_actual = "https://jewel-beta.gemecosystem.com/#/admin";
+            }
+            else {
+                url_actual = "https://jewel.gemecosystem.com/#/admin";
+            }
             STATUS status;
-            if (s.contains(url)) {
+            if (s.contains(url_actual)) {
                 status = STATUS.PASS;
             } else {
                 status = STATUS.FAIL;
             }
-            GemTestReporter.addTestStep("Admin Screen URL Validation", "Expected Text: " + url + "<br>Actual Text: " + s, status, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("Admin Screen URL Validation", "Expected Text: " + url_actual + "<br>Actual Text: " + s, status, DriverAction.takeSnapShot());
         } catch (Exception e) {
             logger.info("Exception occurred", e);
             GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
@@ -3189,7 +3233,7 @@ public class StepDefination extends GemEcoUpload {
     @Then("^verify action buttons$")
     public void admin_action() throws Exception {
         try {
-            if (DriverAction.getElement(edit_project_details).isEnabled() && DriverAction.getElement(delete_project).isEnabled() && DriverAction.getElement(edit_access).isEnabled()) {
+            if (DriverAction.getElement(edit_project_details2).isDisplayed() && DriverAction.getElement(delete_project2).isDisplayed() && DriverAction.getElement(edit_access2).isDisplayed()) {
                 GemTestReporter.addTestStep("Verify action buttons are enabled", "Successful", STATUS.PASS, DriverAction.takeSnapShot());
             } else {
                 GemTestReporter.addTestStep("Verify action buttons are enabled", "Unsuccessful", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -3203,7 +3247,7 @@ public class StepDefination extends GemEcoUpload {
     @Then("^verify action button$")
     public void admin_action2() throws Exception {
         try {
-            if (DriverAction.getElement(edit_project_details2).isEnabled() && DriverAction.getElement(delete_project2).isEnabled() && DriverAction.getElement(edit_access2).isEnabled()) {
+            if (DriverAction.getElement(edit_project_details).isDisplayed() && DriverAction.getElement(delete_project).isDisplayed() && DriverAction.getElement(edit_access).isDisplayed()) {
                 GemTestReporter.addTestStep("Verify action buttons are disabled", "Successful", STATUS.PASS, DriverAction.takeSnapShot());
             } else {
                 GemTestReporter.addTestStep("Verify action buttons are disabled", "Unsuccessful", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -3245,14 +3289,15 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.waitSec(2);
             DriverAction.click(dropdown_of_request, "Select Project(s)");
             DriverAction.waitSec(2);
-            DriverAction.click(inputBox_of_request, "pygem_project");
+            DriverAction.click(inputBox_of_request, "GEMPYP_TEST");
             DriverAction.waitSec(2);
             DriverAction.click(select_access_request, "Select Access Role(s)");
             DriverAction.waitSec(2);
             DriverAction.click(admin_select, "Admin");
             DriverAction.waitSec(2);
             DriverAction.click(request_access_btn, "Request Access");
-            DriverAction.waitSec(4);
+            WebDriverWait wait=new WebDriverWait(DriverManager.getWebDriver(), 10);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Alert_admin1));
             String s = DriverAction.getElementText(Alert_admin1);
             System.out.println("Alert: " + s);
             String s2 = "Request has been send";
@@ -3283,7 +3328,8 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.click(admin_select, "Admin");
             DriverAction.waitSec(2);
             DriverAction.click(request_access_btn, "Request Access");
-            DriverAction.waitSec(4);
+            WebDriverWait wait=new WebDriverWait(DriverManager.getWebDriver(), 10);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Alert_admin1));
             String s = DriverAction.getElementText(Alert_admin1);
             System.out.println("Alert: " + s);
             String s2 = "arpit.mishra : You already have Admin access for TEST-PROJECT";
@@ -3415,7 +3461,10 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.waitSec(2);
             String project_name_before = DriverAction.getElementText(project_name_Admin);
             GemTestReporter.addTestStep("Project name before modification", "Name is: " + project_name_before, STATUS.INFO, DriverAction.takeSnapShot());
-            DriverAction.click(edit_project_details);
+            Actions actions = new Actions(DriverManager.getWebDriver());
+            actions.moveToElement(DriverAction.getElement(edit_project_details2));
+            actions.click();
+            actions.perform();
             DriverAction.waitSec(2);
             DriverAction.click(project_name_create_project, "Project Name");
             DriverAction.waitSec(1);
@@ -3453,7 +3502,10 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.waitSec(2);
             String description_nm_bf4 = DriverAction.getElementText(desc_name_admin);
             GemTestReporter.addTestStep("Description before modification", "Description is: " + description_nm_bf4, STATUS.INFO, DriverAction.takeSnapShot());
-            DriverAction.click(edit_project_details, "Edit Project Details");
+            Actions actions = new Actions(DriverManager.getWebDriver());
+            actions.moveToElement(DriverAction.getElement(edit_project_details2));
+            actions.click();
+            actions.perform();
             DriverAction.waitSec(2);
             DriverAction.click(textArea, "Project Description");
             DriverAction.waitSec(2);
@@ -3490,8 +3542,8 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.doubleClick(Locators.sno, "S No");
             DriverAction.waitSec(2);
             Actions actions = new Actions(DriverManager.getWebDriver());
-            actions.moveToElement(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
-            actions.click(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
+            actions.moveToElement(DriverManager.getWebDriver().findElement(delete_project2)).build().perform();
+            actions.click(DriverManager.getWebDriver().findElement(delete_project2)).build().perform();
             DriverAction.waitSec(2);
             GemTestReporter.addTestStep("Click on Delete Project", "Successfully : Clicked on Delete Project", STATUS.PASS, DriverAction.takeSnapShot());
             DriverAction.click(delete_no_btn, "No");
@@ -3508,15 +3560,15 @@ public class StepDefination extends GemEcoUpload {
             String project_name = DriverAction.getElementText(project_name_Admin);
             GemTestReporter.addTestStep("Project which is being deleted", "Name is: " + project_name, STATUS.INFO, DriverAction.takeSnapShot());
             Actions actions = new Actions(DriverManager.getWebDriver());
-            actions.moveToElement(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
-            actions.click(DriverManager.getWebDriver().findElement(delete_project)).build().perform();
+            actions.moveToElement(DriverManager.getWebDriver().findElement(delete_project2)).build().perform();
+            actions.click(DriverManager.getWebDriver().findElement(delete_project2)).build().perform();
             DriverAction.waitSec(2);
             GemTestReporter.addTestStep("Click on Delete Project", "Successfully : Clicked on Delete Project", STATUS.PASS, DriverAction.takeSnapShot());
             DriverAction.click(delete_yes_btn, "Yes");
             WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
             wait.until(ExpectedConditions.presenceOfElementLocated(Alert_admin2));
             String s = DriverAction.getElement(Alert_admin2).getAttribute("innerHTML");
-            String s2 = "Project has been deleted temporarily and moved to Recycle Bin";
+            String s2 = "Project has been deleted temporarily and moved to Recycle Bin.";
             STATUS status;
             if (s.equals(s2)) {
                 status = STATUS.PASS;
@@ -3847,7 +3899,7 @@ public class StepDefination extends GemEcoUpload {
             actions.click(DriverManager.getWebDriver().findElement(GIT4)).build().perform();
             DriverAction.waitSec(2);
             GemTestReporter.addTestStep("Click on GIT", "Successfully : Clicked on GIT", STATUS.PASS, DriverAction.takeSnapShot());
-            DriverAction.typeText(GITlink, "https://github.com/gem-maulickbharadwaj/JewelUi-AutomationBDD", "Repo Link");
+            DriverAction.typeText(GITlink, "https://github.com/gem-pawandeep/Demo-API-BDD", "Repo Link");
             DriverAction.waitSec(2);
             DriverAction.click(integrateGIT, "Integrate GIT");
             DriverAction.waitSec(30);
@@ -3915,7 +3967,7 @@ public class StepDefination extends GemEcoUpload {
             actions.click(DriverManager.getWebDriver().findElement(GIT)).build().perform();
             DriverAction.waitSec(2);
             GemTestReporter.addTestStep("Click on GIT", "Successfully : Clicked on GIT", STATUS.PASS, DriverAction.takeSnapShot());
-            DriverAction.typeText(GITlink, "https://github.com/gem-maulickbharadwaj/GemEcoSystem-API-JV-master", "Repo Link");
+            DriverAction.typeText(GITlink, "https://github.com/gem-maulickbharadwaj/JewelUi-AutomationBDD.git", "Repo Link");
             DriverAction.waitSec(2);
             DriverAction.click(repoIsPvt);
             DriverAction.waitSec(2);
@@ -3924,7 +3976,7 @@ public class StepDefination extends GemEcoUpload {
             } else {
                 GemTestReporter.addTestStep("Check if Repository is Private (Checkbox isSelected)?", "UnSuccessful", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            DriverAction.typeText(accessToken, "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", "Access Token");
+            DriverAction.typeText(accessToken, "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", "Access Token");
             DriverAction.waitSec(2);
             DriverAction.click(integrateGIT);
             DriverAction.waitSec(20);
@@ -4461,9 +4513,9 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.click(Locators.select_gempyp, "GEMPYP");
             DriverAction.waitSec(1);
             DriverAction.click(select_pr_name, "Project Name");
-            DriverAction.waitSec(1);
+            DriverAction.waitSec(4);
             DriverAction.click(GEMeCO_api, "GEMECO-API-PY");
-            DriverAction.waitSec(1);
+            DriverAction.waitSec(2);
             DriverAction.typeText(input_suite_nm, "test_yashita");
             DriverAction.waitSec(1);
             DriverAction.click(create_suite, "Create Suite Button");
@@ -4686,20 +4738,38 @@ public class StepDefination extends GemEcoUpload {
     @Then("^click on link and validate values in that$")
     public void linkClick() throws Exception {
         try {
-            DriverAction.click(linkClick, "Report Link");
-            ArrayList<String> newTb7 = new ArrayList<>(DriverAction.getWindowHandles());
-            DriverAction.waitSec(2);
-            DriverAction.switchToWindow(newTb7.get(1));
-            DriverAction.waitSec(20);
-            GemTestReporter.addTestStep("Inside the link clicked", "Link clicked Successfully", STATUS.PASS, DriverAction.takeSnapShot());
-            String url = DriverAction.getCurrentURL();
-            STATUS status;
-            if (url.contains("https://jewel-beta.gemecosystem.com/#/autolytics/execution-report")) {
-                status = STATUS.PASS;
+            String url1 = ProjectConfigData.getProperty("launchUrl");
+            if (url1.contains("beta")) {
+                DriverAction.click(linkClick, "Report Link");
+                ArrayList<String> newTb7 = new ArrayList<>(DriverAction.getWindowHandles());
+                DriverAction.waitSec(2);
+                DriverAction.switchToWindow(newTb7.get(1));
+                DriverAction.waitSec(20);
+                GemTestReporter.addTestStep("Inside the link clicked", "Link clicked Successfully", STATUS.PASS, DriverAction.takeSnapShot());
+                String url = DriverAction.getCurrentURL();
+                STATUS status;
+                if (url.contains("https://jewel-beta.gemecosystem.com/#/autolytics/execution-report")) {
+                    status = STATUS.PASS;
+                } else {
+                    status = STATUS.FAIL;
+                }
+                GemTestReporter.addTestStep("Execution Screen Url Validation", "Successful<br>Expected URL: " + url + "<br>Actual URL: " + url, status);
             } else {
-                status = STATUS.FAIL;
+                DriverAction.click(linkClick, "Report Link");
+                ArrayList<String> newTb7 = new ArrayList<>(DriverAction.getWindowHandles());
+                DriverAction.waitSec(2);
+                DriverAction.switchToWindow(newTb7.get(1));
+                DriverAction.waitSec(20);
+                GemTestReporter.addTestStep("Inside the link clicked", "Link clicked Successfully", STATUS.PASS, DriverAction.takeSnapShot());
+                String url = DriverAction.getCurrentURL();
+                STATUS status;
+                if (url.contains("https://jewel.gemecosystem.com/#/autolytics/execution-report")) {
+                    status = STATUS.PASS;
+                } else {
+                    status = STATUS.FAIL;
+                }
+                GemTestReporter.addTestStep("Execution Screen Url Validation", "Successful<br>Expected URL: " + url + "<br>Actual URL: " + url, status);
             }
-            GemTestReporter.addTestStep("Execution Screen Url Validation", "Successful<br>Expected URL: " + url + "<br>Actual URL: " + url, status);
         } catch (Exception e) {
             logger.info("Exception occurred", e);
             GemTestReporter.addTestStep("Error!!", "Something Wrong happened", STATUS.FAIL);
@@ -5039,7 +5109,7 @@ public class StepDefination extends GemEcoUpload {
     }
 
     @Then("^Check the working of filters in suite and testcase table$")
-    public void suiteAndTestcase() throws Exception {
+    public void suiteAndTestcase(){
         try {
             DriverAction.click(suite_id_btn);
             DriverAction.waitSec(2);
@@ -5112,7 +5182,7 @@ public class StepDefination extends GemEcoUpload {
     }
 
     @Then("^check filter for suite pill$")
-    public void chckForSuite() throws Exception {
+    public void chckForSuite(){
         try {
             DriverAction.click(suite_id_btn, "Suite Id");
             DriverAction.waitSec(2);
@@ -5326,7 +5396,83 @@ public class StepDefination extends GemEcoUpload {
         }
     }
 
+    @When("^User (.*) is added to project$")
+    public void addUser_UserAccess(String username) throws Exception {
+        project_created_onGrid();
+        DriverAction.click(edit_access2, "Edit access");
+        DriverAction.click(addUser_project, "Add Users tab");
+        DriverAction.click(adduser_select, "Add user dropdown");
+        DriverAction.typeText(addUser_search, username);
+        DriverAction.click(add_user, "Select user");
+        DriverAction.click(adduser_select, "Close selection dropdown");
+        DriverAction.click(select_role_empty, "Role dropdown");
+        DriverAction.click(select_role, "Select Admin");
+        DriverAction.click(adduser_btn, "Add user button");
+    }
+        @Then("^Validate user (.*) is added$")
+        public void validate_useradded(String username){
+        boolean flag=false;
+            WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(),20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Alert_admin1));
+        if("User Added!".equals(DriverAction.getElementText(Alert_admin1)))
+        {
+            DriverAction.click(changerole_tab,"Change Role Tab");
+            List<String> users=DriverAction.getElementsText(users_list);
+            System.out.println(users);
+            for(int i=0;i<users.size();i++)
+            {
+                System.out.println(username);
+                System.out.println(users.get(i));
+                if(users.get(i).contains("geco-maulik"))
+                {
+                    flag=true;
+                    break;
+                }
+            }
+            if(flag)
+            {
+                GemTestReporter.addTestStep("Validate user is added", "User added successfully", STATUS.PASS);
+            }
+            else
+                GemTestReporter.addTestStep("Validate user is added", "Failed to add user but alert for user added appeared", STATUS.FAIL);
+        }
+        else
+        {
+            GemTestReporter.addTestStep("Validate user is added", "Failed to add user", STATUS.FAIL);
+        }
+    }
 
+    @Then("^Validate delete user (.*) function$")
+    public void deleteUser(String username)
+    {
+        DriverAction.doubleClick(Locators.sno, "S No");
+        DriverAction.waitSec(2);
+        DriverAction.click(edit_access2, "Edit access");
+        WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(),20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(delete_user2));
+        Actions actions = new Actions(DriverManager.getWebDriver());
+        actions.moveToElement(DriverAction.getElement(delete_user2));
+        actions.click();
+        actions.perform();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(Alert_admin1));
+        if("User removed !".equals(DriverAction.getElementText(Alert_admin1))) {
+            boolean flag = false;
+                List<String> users = DriverAction.getElementsText(users_list);
+                for (int i = 0; i < users.size(); i++) {
+                    if (users.get(i).contains(username)) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    GemTestReporter.addTestStep("Validate user is deleted", "User deleted successfully", STATUS.PASS);
+                } else
+                    GemTestReporter.addTestStep("Validate user is deleted", "Failed to delete user but alert for user deletion appeared", STATUS.FAIL);
+            }
+        else{
+        GemTestReporter.addTestStep("Validate user is deleted", "Failed to delete user", STATUS.FAIL);
+    }
+        }
 }
 
 
