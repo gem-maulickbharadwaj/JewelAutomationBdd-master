@@ -147,6 +147,7 @@ public class Locators {
     public static By create_button_Admin=By.xpath("//button[text()=\"Create\"]");
     public static By project_name_Admin=By.xpath("(//td/div[@class=\"text-left\"]/span)[1]");
     public static By desc_name_admin=By.xpath("(//td/div[@class=\"text-left\"]/span)[2]");
+    public static By edit_details_dialog=By.xpath("//div[@class='p-dialog-header']");
     public static By delete_no_btn=By.xpath("//div[@class=\"btn btn-danger mx-2\"]");
     public static By delete_yes_btn=By.xpath("//div[@class=\"btn btn-success\"]");
     public static By save_admin_button=By.xpath("//button[text()=\"Save\"]");
@@ -409,5 +410,15 @@ public class Locators {
     public static By select_role=By.xpath("//li[@aria-label='Admin']");
     public static By adduser_btn=By.xpath("//button[text()='Add User']");
     public static By delete_user2=By.xpath("(//div[@id='pills-changeRole']//*[local-name()='svg' and @data-icon=\"trash-can\"]/*[local-name()='path'])[2]");
+    public static By shareVia_testtool=By.xpath("(//*[local-name()='svg' and @data-icon=\"envelope\" and not(contains(@class,\"disabledIcon\"))]/*[local-name()='path'])[1]");
+    public static By email_to=By.xpath("(//li[@class='p-chips-input-token']/input)[1]");
+    public static By email_cc=By.xpath("(//li[@class='p-chips-input-token']/input)[2]");
+    public static By email_bcc=By.xpath("(//li[@class='p-chips-input-token']/input)[3]");
+    public static By email_save=By.xpath("//button[text()='Save ']");
+    public static By gototop_button=By.xpath("//button[@id='scrolltop']");
+    public static By cross_icon=By.xpath("//img[@class='crossicon']");
+    public static By alreadyregistered_btn=By.xpath("//a[text()='Login']");
+    public static By username_availability=By.xpath("//span[@class='me-1']");
+    public static By password_check=By.xpath("//h6");
 }
 

@@ -50,14 +50,6 @@ Feature: Sign Up
     Given click on signup
     Then Validate username availability sign appears on focusing on username field and disappears if it goes out of focus
 
-  Scenario: Password strength dialog
-    Given click on signup
-    Then Password strength dialog appears on focusing on password field and disappears if it goes out of focus
-
-#  Scenario: confirmation password equality check
-#    Given click on signup
-#    When Fill fields "arpit","mishra","","arpit.mishra@gemperf.com","arpit1234","arpit1234","Y"
-#    When User enters "different" passwords in password and confirmation-password
-#    Then Click register and validate if signUp is unsuccessful
-#    When User enters "same" passwords in password and confirmation-password
-#    Then Click register and validate if signUp is successful
+    Scenario: Password strength dialog
+      Given click on signup
+      Then Password strength dialog appears on focusing on password field and disappears if it goes out of focus

@@ -4,7 +4,7 @@ Feature: Welcome Screen
     Given validating url of jewel
     Then click on pricing
     Then validate pricing url
-
+#
   Scenario Outline: Clicking on facebook logo and validating url
     Given click on facebook logo validate url <facebook>
     Examples:
@@ -37,19 +37,19 @@ Feature: Welcome Screen
     Examples:
       | pyp                              |
       | https://gempyp.gemecosystem.com/ |
-
+#
 #  Scenario Outline: Clicking on gemPRF
 #    Given click on gemPRF and validate url <prf>
 #    Examples:
 #      | prf                              |
 #      | https://gemprf.gemecosystem.com/ |
-
+#
   Scenario Outline: Clicking on gemJAR
     Given click on gemJAR and validate url <jar>
     Examples:
       | jar                              |
       | https://gemjar.gemecosystem.com/ |
-
+#
   Scenario: Click on pricing logo
     Given click on pricing button
 
