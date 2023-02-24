@@ -3959,7 +3959,7 @@ public class StepDefination extends GemEcoUpload {
             } else {
                 GemTestReporter.addTestStep("Check if Repository is Private (Checkbox isSelected)?", "UnSuccessful", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            DriverAction.typeText(accessToken, "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", "Access Token");
+            DriverAction.typeText(accessToken, "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", "Access Token");
             DriverAction.waitSec(2);
             DriverAction.click(integrateGIT);
             DriverAction.waitSec(20);
@@ -4243,7 +4243,7 @@ public class StepDefination extends GemEcoUpload {
             DriverAction.typeText(valueInput, "https://apis-beta.gemecosystem.com");
             DriverAction.waitSec(1);
             DriverAction.click(createTestcaseButton, "Create testcase button");
-            DriverAction.waitSec(5);
+            DriverAction.waitSec(10);
             DriverAction.doubleClick(testcaseIDd);
             DriverAction.waitSec(3);
             String s1 = DriverAction.getElementText(firsttestcaseName);
