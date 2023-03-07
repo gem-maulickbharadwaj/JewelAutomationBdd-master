@@ -182,6 +182,8 @@ public class Locators {
     public static By keyofJson = By.xpath("//pre[contains(text(),'data')]");
     public static By see_more = By.xpath("(//span[text()=\"See More\"])[1]");
     public static By click_here = By.xpath("//a[text()=\"Click here\"]");
+    public static By company_new_name=By.xpath("(//tr/td/div/span/span[@class=\" \"])[2]");
+    public static By verify_confirmation=By.xpath("(//span[@class=\"pass-color boldText \"])[1]");
     public static By browser_isCompat = By.xpath("//strong[text()=\"If File is Browser Compatible it will open in new Window else it will download the file.\"]");
     public static By demo_test = By.xpath("(//div[@class=\"text-left\"])[1]");
     public static By selectFilter3 = By.xpath("(//*[@class='p-column-filter-menu-button p-link'])[11]");
@@ -256,6 +258,8 @@ public class Locators {
     public static By testTool = By.xpath("//div[text()=\"Test Tool\"]");
     public static By suite = By.xpath("//div[text()=\"Suite\"]");
     public static By testCasePlus = By.xpath("(//*[local-name()='svg' and @data-icon='square-plus']/*[local-name()='path'])[1]");
+    public static By tick_option=By.xpath("(//*[local-name()='svg' and @data-icon=\"circle-check\"]/*[local-name()='path'])[1]");
+    public static By unlink_option=By.xpath("(//*[local-name()='svg' and @data-icon=\"ban\"]/*[local-name()='path'])[1]");
     public static By testCasePlus2 = By.xpath("(//*[local-name()='svg' and @data-icon='square-plus']/*[local-name()='path'])[4]");
     public static By testCasePlus3 = By.xpath("(//*[local-name()='svg' and @data-icon='square-plus']/*[local-name()='path'])[2]");
     public static By testcase = By.xpath("//div[text()=\"Testcases\"]");
@@ -312,6 +316,8 @@ public class Locators {
     public static By hasNext3 = By.xpath("//button[text()=\"3\"]");
     public static By hasNext4 = By.xpath("//button[text()=\"4\"]");
     public static By buttons = By.xpath("//span[@class=\"p-paginator-pages\"]/button");
+    public static By super_admin=By.xpath("//div[text()=\"Super Admin\"]");
+    public static By select_company_name=By.xpath("//input[@placeholder=\"Select Company Name\"]");
     public static By nextPageBtn = By.xpath("//button[@aria-label='Next Page']");
     public static By nextPageBtn2 = By.xpath("(//button[@aria-label='Next Page'])[2]");
     public static By testcaseUpdated = By.xpath("//div[text()=\"Testcase updated successfully !\"]");

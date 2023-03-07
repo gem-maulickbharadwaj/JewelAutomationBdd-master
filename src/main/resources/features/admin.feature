@@ -53,14 +53,17 @@ Feature: Admin Screen
     Given click on admin
     Then User <username> is added to project
     Then Validate user <username> is added
-    Examples: |username|
-              |geco-maulik|
+    Examples:
+      | username    |
+      | geco-maulik |
 
   Scenario Outline: Validate delete option in project user access
     Given click on admin
     Then Validate delete user <username> function
-    Examples: |username|
-              |geco-maulik|
+    Examples:
+      | username    |
+      | geco-maulik |
+
 
 
 
